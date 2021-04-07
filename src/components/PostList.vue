@@ -8,13 +8,20 @@
 </template>
 
 <script>
+import { onMounted, onUpdated } from 'vue'
 import SinglePost from './SinglePost.vue'
 
 export default {
     props: ['posts'],
     components: { SinglePost },
     setup(props){
-        console.log(props.posts)
+     onMounted(() =>
+         console.log('components mounted'))
+         onMounted(() => console.log('component unmounted'))
+         onUpdated(() => console.log('component updated'))
+    },
+    mounted() {
+        console.log('mounted using options api')
     }
 }
 </script>
