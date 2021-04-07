@@ -1,25 +1,32 @@
 <template>
   <div class="home">
     home
-    <p>My name is {{ name }} and my age is {{ 30 }}</p>
+    <p ref="p">My name is {{ name }} and my age is {{ 30 }}</p>
     <button @click="handleClick">click me</button>
   </div>
 </template>
 
 <script>
+// Template refs
+import { ref } from 'vue'
+
 export default {
   name: 'Home',
   setup() {
-    console.log('setup')
+    console.log('this')
 
-    let name = "mario"
+    const p = ref(null)
+
+    let name = 'mario'
     let age = 30
 
     const handleClick =() => {
-      console.log('you clicked me')
+      console.log(p, p.value)
+      p.value.classList.add('test')
+      p.value.textContent = 'hello, ninjas'
     }
 
-    return { name, age, handleClick }
+    return { name, age, handleClick, p }
 
   },
 
